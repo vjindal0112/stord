@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Row, Col } from "react-grid-system";
 
 const Header = styled.div`
   height: 40px;
@@ -18,16 +19,83 @@ const Wave = styled.img`
   @media (max-width: 1024px) {
     display: none;
   }
-`
+`;
 
 const Wrapper = styled.div`
   height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "NH DS Pro 55", "Helvetica Neue", "Helvetica", "Roboto", "Arial",
+    "sans-serif";
+`;
+
+const Headline = styled.h1`
+  font-weight: bold;
+  margin-bottom: 12px;
+`;
+
+const Subtext = styled.p`
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+`;
+
+const Input = styled.input`
+  padding: 10px;
+  border: 1px solid black;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 20px;
+  ::-webkit-input-placeholder {
+    font-family: "NH DS Pro 55", "Helvetica Neue", "Helvetica", "Roboto",
+      "Arial", "sans-serif";
+  }
+  ::-moz-placeholder {
+    font-family: "NH DS Pro 55", "Helvetica Neue", "Helvetica", "Roboto",
+      "Arial", "sans-serif";
+  }
+  :-ms-input-placeholder {
+    font-family: "NH DS Pro 55", "Helvetica Neue", "Helvetica", "Roboto",
+      "Arial", "sans-serif";
+  }
+  :-moz-placeholder {
+    font-family: "NH DS Pro 55", "Helvetica Neue", "Helvetica", "Roboto",
+      "Arial", "sans-serif";
+  }
+`;
+
+const Submit = styled.button`
+  background-color: #1463FF;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  height: 37px;
+  font-weight: bold;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  :hover {
+    background-color: #4282ff;
+  }
+`
+
+const Spacer = styled(Col)`
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 function App() {
   return (
     <Wrapper>
-    <Wave src="./wave.svg"></Wave>
+      <Wave src="./wave.svg"></Wave>
       <Header>
         <svg width="201" height="43" viewBox="0 0 201 43" fill="none">
           <g>
@@ -64,6 +132,23 @@ function App() {
           </g>
         </svg>
       </Header>
+      <Row style={{ width: "80%" }}>
+        <Col lg={8}>
+          <Headline>Don't be like Notion, have short links</Headline>
+          <Subtext>Paste your url, get a shortened link</Subtext>
+          <br />
+          <Row>
+            <Col lg={10}>
+          <Input placeholder="Paste link here"></Input>
+
+            </Col>
+            <Col lg={2}>
+              <Submit>Shorten</Submit>
+            </Col>
+          </Row>
+        </Col>
+        <Spacer lg={4}></Spacer>
+      </Row>
     </Wrapper>
   );
 }

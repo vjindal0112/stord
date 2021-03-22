@@ -1,0 +1,39 @@
+Hello! I had a fun time doing this exercise. Here are the notes for how to run it and some of my thoughts.
+
+`git clone https://github.com/vjindal0112/stord.git`
+
+`yarn` : for installing all packages
+
+`yarn start` : for running local server
+
+`yarn test` : for running all tests (backend and frontend)
+
+`yarn build` : for creating production build
+
+`yarn global add serve` : for serving production build
+`serve -s build` 
+
+
+Architecture:
+- Google Cloud serverless functions which interact with a Google PostgreSQL instance
+- React front end, react-testing-library for tests
+
+Why GCP: nicer interface than AWS, better support / tutorials
+Why PostgreSQL: better support than MySQL, more features, better community, ~sounds~ cooler
+Why SQL over noSQL: wanted auto increment for storing the urls
+Why React: component based development makes everything faster
+Why not Typescript: would use it, haven't taken the time to get familiar with it
+Why react-testing-library: ships with create-react-app, simple
+
+Other tools:
+Used Figma for a small mockup before starting
+
+Notes for improvement:
+- Right now security is the biggest concern
+- Auto incrementing ids make urls easy to guess. Ideally I would have some sort of salt that I would hash with the ids, 
+or just perform a hash on the ids
+- My Google Cloud Function endpoints are completely exposed. Would be much better to obfuscate them (netlify _redirects 
+makes this possible) and also enable more security / auth on the function side
+- Additionally, it would be nice to have the urls you have already created saved from a UX standpoint (perhaps even 
+login eventually). Also the button for "Shorten" should change when the shortened url is populated into the input field.
+Perhaps to "Copy".

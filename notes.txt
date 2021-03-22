@@ -34,6 +34,8 @@ Notes for improvement:
 or just perform a hash on the ids
 - My Google Cloud Function endpoints are completely exposed. Would be much better to obfuscate them (netlify _redirects 
 makes this possible) and also enable more security / auth on the function side
+- I had to enable CORS in the Google Cloud Functions, it would have been better to avoid this using the netlify _redirects
+file. I would have done this if it didn't have to be functional on localhost
 - Additionally, it would be nice to have the urls you have already created saved from a UX standpoint (perhaps even 
 login eventually). Also the button for "Shorten" should change when the shortened url is populated into the input field.
 Perhaps to "Copy".

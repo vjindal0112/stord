@@ -10,20 +10,20 @@ In the project directory, you can run:
 
 #### `yarn start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 - everything is functional on localhost (including the CORS requests to the Cloud function endpoints)
 
 #### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
+Launches the test runner in the interactive watch mode.
 
 - All tests will run with this command (front-end and back-end)
 
 #### `yarn build`
 
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `build` folder.
 
 #### `yarn eject`
 

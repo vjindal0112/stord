@@ -1,5 +1,5 @@
-import TestRenderer from "react-test-renderer";
 import Decode from "./Decode";
+import { render, screen } from '@testing-library/react';
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"), // use actual for all non-hook parts
@@ -8,7 +8,8 @@ jest.mock("react-router-dom", () => ({
   }),
 }));
 
-it("renders Decode screen and no elements should render", () => {
-  const tree = TestRenderer.create(<Decode />).toJSON();
-  expect(tree).toBe(null);
+it('renders Decode screen and loading indicator exists', () => {
+  render(<Decode />);
+  const loader = screen.getByLabelText("audio-loading");
+  expect(loader).toBeInTheDocument();
 });

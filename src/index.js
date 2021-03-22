@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import './index.css';
 import App from './App';
+import Decode from './pages/Decode'
 import reportWebVitals from './reportWebVitals';
 
 const routing = (
   <Router>
     <Switch>
       <Route exact path="/" component={App} />
+      <Route path="/v/:base62Str" component={Decode} />
     </Switch>
   </Router>
 )

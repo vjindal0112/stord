@@ -8,24 +8,24 @@ The whole project is also live at [https://url.varunjindal.com](https://url.varu
 
 In the project directory, you can run:
 
-### `yarn start`
+#### `yarn start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 - everything is functional on localhost (including the CORS requests to the Cloud function endpoints)
 
-### `yarn test`
+#### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
+Launches the test runner in the interactive watch mode.
 
 - All tests will run with this command (front-end and back-end)
 
-### `yarn build`
+#### `yarn build`
 
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `build` folder.
 
-### `yarn eject`
+#### `yarn eject`
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 

@@ -11,6 +11,7 @@ import {
   Wave,
 } from "./styles";
 import Loader from "react-loader-spinner";
+import { encodeBase62, getSerial } from './functions'
 
 const Spacer = styled(Col)`
   @media (max-width: 1024px) {
@@ -22,59 +23,9 @@ function App() {
   const [link, setLink] = useState("");
   const [loading, setLoading] = useState(false);
 
-  function encodeBase62(base10Num) {
-    const map =
-      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    var base62Num = "";
-    while (base10Num > 0) {
-      let leftover = base10Num % 62;
-      base62Num = map[leftover] + base62Num;
-      base10Num = Math.floor(base10Num / 62);
-    }
-    return base62Num;
-  }
-
-  function checkValid(url) {
-    if (url.startsWith("https://") || url.startsWith("http://")) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  async function getSerial(url) {
-    if (!checkValid(url)) {
-      alert("Please enter a valid url with http(s)://");
-      return null;
-    }
-    setLoading(true);
-    var data = {
-      url: url,
-    };
-    return fetch(
-      "https://us-central1-stord-308319.cloudfunctions.net/ReturnShortURL/",
-      {
-        method: "POST", 
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
-      .then((response) => {
-        console.log(response);
-        // return response.json();
-        return response.json();
-      })
-      .then((data) => {
-        setLoading(false);
-        return data;
-      });
-  }
-
   return (
     <Wrapper>
-      <Wave src="./wave.svg"></Wave>
+      <Wave alt="background wave" src="./wave.svg"></Wave>
       <Header>
         <svg width="201" height="43" viewBox="0 0 201 43" fill="none">
           <g>
@@ -127,7 +78,7 @@ function App() {
             <Col lg={2}>
               <Submit
                 onClick={() => {
-                  getSerial(link).then((index) => {
+                  getSerial(link, setLoading).then((index) => {
                     if (index != null) {
                       setLink(
                         window.location.href + "v/" + encodeBase62(index)

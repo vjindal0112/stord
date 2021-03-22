@@ -84,3 +84,6 @@ export const Submit = styled.button`
     background-color: #4282ff;
   }
 `
+
+Submit.displayName = 'Submit';
+Input.displayName = 'Input';
